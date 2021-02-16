@@ -23,7 +23,7 @@ const dummyData = [
                 text: "Can't wait to try it!",
             },
         ],
-        likedBy: [
+        likedBy: [ 
         ],
     },
     {
@@ -56,6 +56,7 @@ const dummyData = [
             },
         ],
         likedBy: [
+            
         ],
     },
 ];

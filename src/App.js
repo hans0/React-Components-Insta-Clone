@@ -33,11 +33,30 @@ const App = () => {
         - if the `id` of the post matches `postId`, return a new post object with the desired values (use the spread operator).
         - otherwise just return the post object unchanged.
      */
-    // const post = posts[postId];
-    // console.log(postId);
-    // return postId;
+    
     setPosts(posts.map(post => {
-      return post.id === postId ? {...post, likes: post.likes+1} : post;
+      // return post.id === postId ? {...post, likes: post.likes+1} : post;
+      const newLikedBy = post.likedBy;
+      if (post.id === postId) {
+        console.log(Array.isArray(post.likedBy))
+
+        console.log(`post.likedBy: ${typeof(post.likedBy)}`)
+        console.log(typeof(post.likedBy))
+        console.log(post.likedBy.indexOf(currentUserId))
+        console.log(currentUserId);
+        if (post.likedBy.indexOf(currentUserId) != -1){
+          console.log(`newLikedBy: ${newLikedBy}`);
+
+          console.log(newLikedBy);
+          return {...post, likes: post.likes-1, likedBy: post.likedBy.filter((id)=> {return id !== currentUserId})};
+          // return {...post, likes: post.likes+1, likedBy: [...post.likedBy, currentUserId]}; 
+
+        } else {
+          return {...post, likes: post.likes+1, likedBy: [...post.likedBy, currentUserId]}; 
+        }
+      } else {
+        return post;
+      }
     }));
   };
 

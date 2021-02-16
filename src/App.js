@@ -19,6 +19,8 @@ const App = () => {
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
   const [posts, setPosts] = useState(dummyData);
 
+  const [search, setSearch] = useState('');
+
   const [currentUserId, setCurrentUserId] = useState(10);
 
   const likePost = postId => {
@@ -36,21 +38,18 @@ const App = () => {
     
     setPosts(posts.map(post => {
       // return post.id === postId ? {...post, likes: post.likes+1} : post;
-      const newLikedBy = post.likedBy;
+      // const newLikedBy = post.likedBy;
       if (post.id === postId) {
-        console.log(Array.isArray(post.likedBy))
-
-        console.log(`post.likedBy: ${typeof(post.likedBy)}`)
-        console.log(typeof(post.likedBy))
-        console.log(post.likedBy.indexOf(currentUserId))
-        console.log(currentUserId);
+        // console.log(Array.isArray(post.likedBy))
+        // console.log(`post.likedBy: ${typeof(post.likedBy)}`)
+        // console.log(typeof(post.likedBy))
+        // console.log(post.likedBy.indexOf(currentUserId))
+        // console.log(currentUserId);
+        console.log(post.likedBy);
         if (post.likedBy.indexOf(currentUserId) != -1){
-          console.log(`newLikedBy: ${newLikedBy}`);
-
-          console.log(newLikedBy);
+          // console.log(`newLikedBy: ${newLikedBy}`);
+          // console.log(newLikedBy);
           return {...post, likes: post.likes-1, likedBy: post.likedBy.filter((id)=> {return id !== currentUserId})};
-          // return {...post, likes: post.likes+1, likedBy: [...post.likedBy, currentUserId]}; 
-
         } else {
           return {...post, likes: post.likes+1, likedBy: [...post.likedBy, currentUserId]}; 
         }
@@ -64,7 +63,7 @@ const App = () => {
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
       {/* Check the implementation of each component, to see what props they require, if any! */}
-      <SearchBar />
+      <SearchBar search={search} />
       <Posts likePost={likePost} posts={posts} />
     </div>
   );

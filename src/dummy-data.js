@@ -23,6 +23,8 @@ const dummyData = [
                 text: "Can't wait to try it!",
             },
         ],
+        likedBy: [ 
+        ],
     },
     {
         id: 2,
@@ -52,6 +54,9 @@ const dummyData = [
                 username: "dennis_futbol",
                 text: "It that injustice",
             },
+        ],
+        likedBy: [
+            
         ],
     },
 ];
